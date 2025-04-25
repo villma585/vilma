@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de Zapatos</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #db59a5, #5ac6e0);
+      color: #f00797;
+      padding: 20px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-areas:
+        "header  header   header"
+        "aside   section  nav"
+        "aside   section  nav"
+        "article article article"
+        "footer  footer  footer";
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-gap: 20px;
+    }
+
+    header {
+      grid-area: header;
+      background: linear-gradient(to right, #74c0c0, #e71baa);
+      color: rgb(62, 56, 73);
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    aside {
+      grid-area: aside;
+      background-color: #5aa8b3;
+      border-left: 5px solid #76bed49a;
+      padding: 20px;
+      border-radius: 10px;
+      font-style: italic;
+      color: #ffffff;
+    }
+
+    nav {
+      grid-area: nav;
+      background-color: #e7d9e5ea;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav li {
+      margin: 10px 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #84bfd1;
+      font-weight: bold;
+    }
+
+    .secciones {
+      grid-area: section;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    section {
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(148, 110, 148, 0.1);
+      color: #333;
+    }
+
+    section:nth-child(1) {
+      background-color: #ffe6f0;
+    }
+
+    section:nth-child(2) {
+      background-color: #e6f9ff;
+    }
+
+    article {
+      grid-area: article;
+      background: rgb(151, 227, 233);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(185, 162, 180, 0.05);
+    }
+
+    footer {
+      grid-area: footer;
+      background: #180e4e;
+      color: rgb(209, 113, 177);
+      text-align: center;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    input[type="number"], button {
+      padding: 10px;
+      margin: 10px 5px;
+      border-radius: 8px;
+      border: 1px solid #b4d860;
+    }
+
+    button {
+      background-color: #4ec0c8;
+      color: #000;
+      cursor: pointer;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #c8d146;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>EXAMEN DE NIVELACIÓN</h1>
+    </header>
+
+    <aside>
+      <h3>EJERCICIO 1</h3>
+      <p>VERIFICAR SI SON PARES O INPARES</p>
+    </aside>
+
+    <section class="secciones">
+      <section>
+        <h2>VERIFICAR SI SON PARES O INPARES</h2>
+        <input type="number" id="num1" placeholder="Número 1">
+        <input type="number" id="num2" placeholder="Número 2">
+        <button onclick="verificarParImpar()">Verificar</button>
+        <p id="resultado1"></p>
+      </section>
+
+      <section>
+        <h2>ENCONTRAR EL NUMERO MAYOR DE DOS NUMEROS</h2>
+        <input type="number" id="n1" placeholder="Número 1">
+        <input type="number" id="n2" placeholder="Número 2">
+        <button onclick="encontrarMayor()">Mostrar mayor</button>
+        <p id="resultado2"></p>
+      </section>
+    </section>
+
+    <nav>
+        <h3>EJERCICIO 1</h3>
+        <p>ENCONTRAR EL NUMERO DE DOS NUMEROS</p>
+    </nav>
+
+    <article>
+      <h2>Artículo</h2>
+      
+    </article>
+
+    <footer>
+      <p> QUIROZ COCA VILLMA</p>
+    </footer>
+  </div>
+
+  <script>
+    function verificarParImpar() {
+      var num1 = parseInt(document.getElementById('num1').value);
+      var num2 = parseInt(document.getElementById('num2').value);
+  
+      if (isNaN(num1) || isNaN(num2)) {
+        document.getElementById('resultado1').innerHTML = " ingresa ambos números.";
+        return;
+      }
+  
+      var resultado = "Número 1 (" + num1 + ") es " + (num1 % 2 === 0 ? "par" : "impar") + "<br>";
+      resultado += "Número 2 (" + num2 + ") es " + (num2 % 2 === 0 ? "par" : "impar");
+  
+      document.getElementById('resultado1').innerHTML = resultado;
+    }
+  
+    function encontrarMayor() {
+      var n1 = parseInt(document.getElementById('n1').value);
+      var n2 = parseInt(document.getElementById('n2').value);
+      
+  
+      if (isNaN(n1) || isNaN(n2) ) {
+        document.getElementById('resultado2').textContent = " ingresa los tres números.";
+        return;
+      }
+
+      var mayor = Math.max(n1, n2);
+  
+      document.getElementById('resultado2').textContent = "El mayor número es: " + mayor;
+    }
+  </script>
+</body>
+</html>
+
+
